@@ -120,7 +120,7 @@
     private void gamestop()
     {
         timer.Stop();
-        timeDisplay += " - Play Again?";
+        timeDisplay += " GAME OVER";
         SetUpGame();
     }
     string lastAnimalFound = string.Empty;
@@ -144,7 +144,7 @@
             if (matchesFound == 8)
             {
                 timer.Stop();
-                timeDisplay += " - Play Again?";
+                timeDisplay += "GAME COMPLETE";
                 SetUpGame();
             }
         }
