@@ -38,7 +38,9 @@
 </div>
 
 @code {
-    List<string> animalEmoji = new List<string>()
+    static List<string> VelgEmoji()
+    {
+        List<string> animalEmoji = new List<string>()
     {
         "🐶", "🐶",
         "🐺", "🐺", 
@@ -49,6 +51,45 @@
         "🐯", "🐯", 
         "🐹", "🐹", 
     };
+        List<string> frukt = new List<string>()
+        {
+            "🍈", "🍈",
+            "🍇", "🍇", 
+            "🍉", "🍉", 
+            "🍊", "🍊", 
+            "🍌", "🍌", 
+            "🍍", "🍍", 
+            "🥝", "🥝", 
+            "🍒", "🍒",
+        };
+
+        List<string> matt = new List<string>()
+        {
+          "🧀", "🧀",
+          "🍞", "🍞", 
+          "🥐", "🥐", 
+          "🥯", "🥯", 
+          "🥓", "🥓", 
+          "🍖", "🍖", 
+          "🍔", "🍔", 
+          "🌭", "🌭", 
+        };
+
+        Random random = new Random();
+        List<List<string>> choose = new List<List<string>>()
+                {
+                    animalEmoji, frukt, matt,
+                };
+        choose.Add(animalEmoji);
+        choose.Add(frukt);
+        choose.Add(matt);
+        int valgPosisjon = random.Next(0,3);
+
+        List<string> valgt = choose[valgPosisjon];
+        return valgt;
+    }
+
+
     List<string> shuffledAnimals = new List<string>();
     int matchesFound = 0;
     Timer timer;
@@ -64,8 +105,8 @@
     private void SetUpGame()
     {
         Random random = new Random();
-        shuffledAnimals = animalEmoji
-            .OrderBy(item => random.Next())
+        shuffledAnimals = VelgEmoji()
+        .OrderBy(item => random.Next())
             .ToList();
         matchesFound = 0;
         tenthsOfSecondsElapsed = 0;
@@ -115,5 +156,4 @@
 
         });
     }
-}
 }
