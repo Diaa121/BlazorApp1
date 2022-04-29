@@ -33,6 +33,12 @@
 
     </div>
     <div class="row">
+        <h2>Matches found: @matchesFound</h2>
+    </div>
+    <button @onclick="@(() => SetUpGame())"type="button" class="btn btn-outline-dark">
+        start or restart
+    </button>
+    <div class="row">
         <h2>Time: @timeDisplay</h2>
     </div>
 </div>
@@ -101,7 +107,7 @@
         timer.Elapsed += Timer_Tick;
         SetUpGame();
     }
-
+       List<string> test = VelgEmoji();
     private void SetUpGame()
     {
         Random random = new Random();
@@ -110,6 +116,12 @@
             .ToList();
         matchesFound = 0;
         tenthsOfSecondsElapsed = 0;
+    }
+    private void gamestop()
+    {
+        timer.Stop();
+        timeDisplay += " - Play Again?";
+        SetUpGame();
     }
     string lastAnimalFound = string.Empty;
     string lastdescription = string.Empty;
@@ -150,6 +162,11 @@
             tenthsOfSecondsElapsed++;
             timeDisplay = (tenthsOfSecondsElapsed / 10F)
                 .ToString("0.0s");
+             if(tenthsOfSecondsElapsed == 200)
+            {
+                gamestop();
+
+            }
             
 
             StateHasChanged();
