@@ -3,6 +3,30 @@
 <PageTitle>Index</PageTitle>
 
 <h1>TDS2490-oblig</h1>
+<style>
+    .container {
+        width: 400px;
+    }
+
+    button {
+        width: 100px;
+        height: 100px;
+        font-size: 50px;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row">
+        @foreach (var animal in shuffledAnimals)
+        {
+            <div class="col-3">
+               
+            </div>
+        }
+
+    </div>
+</div>
 
 @code {
     List<string> animalEmoji = new List<string>()
@@ -16,4 +40,5 @@
         "🐯", "🐯", 
         "🐹", "🐹", 
     };
+     List<string> shuffledAnimals = new List<string>();
 }
